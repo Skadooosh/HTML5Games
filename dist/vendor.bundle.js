@@ -98,12 +98,12 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 341);
+/******/ 	return __webpack_require__(__webpack_require__.s = 344);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 130:
+/***/ 131:
 /*!*************************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/pixi.js-exposed ***!
   \*************************************************************/
@@ -116,7 +116,7 @@
 
 /***/ }),
 
-/***/ 131:
+/***/ 132:
 /*!***********************************************************!*\
   !*** ./node_modules/phaser-ce/build/custom/p2.js-exposed ***!
   \***********************************************************/
@@ -125,19 +125,6 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {module.exports = global["p2"] = __webpack_require__(/*! -!./p2.js */ 338);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 47)))
-
-/***/ }),
-
-/***/ 132:
-/*!*********************************************************************!*\
-  !*** ./node_modules/phaser-ce/build/custom/phaser-split.js-exposed ***!
-  \*********************************************************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Phaser"] = __webpack_require__(/*! -!./phaser-split.js */ 339);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 47)))
 
 /***/ }),
@@ -113602,7 +113589,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 341:
+/***/ 344:
 /*!****************************!*\
   !*** multi pixi p2 phaser ***!
   \****************************/
@@ -113610,9 +113597,9 @@ process.umask = function() { return 0; };
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! pixi */130);
-__webpack_require__(/*! p2 */131);
-module.exports = __webpack_require__(/*! phaser */132);
+__webpack_require__(/*! pixi */131);
+__webpack_require__(/*! p2 */132);
+module.exports = __webpack_require__(/*! phaser */53);
 
 
 /***/ }),
@@ -113647,6 +113634,19 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ 53:
+/*!*********************************************************************!*\
+  !*** ./node_modules/phaser-ce/build/custom/phaser-split.js-exposed ***!
+  \*********************************************************************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Phaser"] = __webpack_require__(/*! -!./phaser-split.js */ 339);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 47)))
 
 /***/ })
 
