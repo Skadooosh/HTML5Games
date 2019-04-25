@@ -4483,7 +4483,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */134);
-module.exports = __webpack_require__(/*! D:\Game-1\src\main.js */336);
+module.exports = __webpack_require__(/*! E:\HTML5Games\src\main.js */336);
 
 
 /***/ }),
@@ -11167,7 +11167,7 @@ var _class = function (_Phaser$State) {
 
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
-            this.scale.scaleMode = _phaser2.default.ScaleManager.SHOW_ALL;
+            this.scale.scaleMode = _phaser2.default.ScaleManager.NO_SCALE;
 
             this.state.start('Game');
         }
@@ -11204,11 +11204,11 @@ var _Parallax = __webpack_require__(/*! ../Parallax */ 343);
 
 var _Parallax2 = _interopRequireDefault(_Parallax);
 
-var _player = __webpack_require__(/*! ../prefab/player */ 345);
+var _player = __webpack_require__(/*! ../prefab/player */ 344);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _enemy = __webpack_require__(/*! ../prefab/enemy */ 346);
+var _enemy = __webpack_require__(/*! ../prefab/enemy */ 345);
 
 var _enemy2 = _interopRequireDefault(_enemy);
 
@@ -11240,7 +11240,7 @@ var _class = function (_Phaser$State) {
                                 width: 1024,
                                 height: 768,
                                 asset: 'scroll-bg',
-                                speed: .75
+                                speed: 2
                         });
                         this.game.add.existing(this.bg);
 
@@ -11262,7 +11262,7 @@ var _class = function (_Phaser$State) {
                                 width: 1024,
                                 height: 768,
                                 asset: 'scroll-bg-old',
-                                speed: .75
+                                speed: 2
                         });
                         this.game.add.existing(this.bgold);
 
@@ -11376,8 +11376,7 @@ var _class = function (_Phaser$TileSprite) {
 exports.default = _class;
 
 /***/ }),
-/* 344 */,
-/* 345 */
+/* 344 */
 /*!******************************!*\
   !*** ./src/prefab/player.js ***!
   \******************************/
@@ -11393,6 +11392,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaser = __webpack_require__(/*! phaser */ 53);
+
+var _phaser2 = _interopRequireDefault(_phaser);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11421,27 +11426,46 @@ var Player = function (_Phaser$Sprite) {
 
         _this.hp = hp;
         _this.maxHP = hp;
+        _this.JUMPSPEED = -1000;
 
         _this.x += _this.width;
-        _this.y -= _this.height / 2;
+        _this.y = 200;
+        _this.jumpTimer = 0;
 
         _this.animations.add('walk', [9, 10]);
         _this.animations.play('walk', 4, true);
+
+        _this.body.collideWorldBounds = true;
+        _this.game.physics.arcade.gravity.y = 2600;
+
+        _this.cursors = game.input.keyboard.createCursorKeys();
+        _this.jumpButton = game.input.keyboard.addKey(_phaser2.default.Keyboard.SPACEBAR);
         return _this;
     }
 
     _createClass(Player, [{
         key: 'update',
-        value: function update() {}
+        value: function update() {
+
+            this.body.velocity.x = 0;
+
+            if (this.jumpButton.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+                this.body.velocity.y = this.JUMPSPEED;
+                this.jumpTimer = game.time.now + 750;
+            }
+        }
+    }, {
+        key: 'jump',
+        value: function jump() {}
     }]);
 
     return Player;
-}(Phaser.Sprite);
+}(_phaser2.default.Sprite);
 
 exports.default = Player;
 
 /***/ }),
-/* 346 */
+/* 345 */
 /*!*****************************!*\
   !*** ./src/prefab/enemy.js ***!
   \*****************************/

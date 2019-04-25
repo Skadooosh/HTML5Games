@@ -15,7 +15,7 @@ export default class extends Phaser.State {
             width : 1024,
             height : 768,
             asset : 'scroll-bg',
-            speed : .75,
+            speed : 2,
         })
         this.game.add.existing(this.bg);
         
@@ -38,7 +38,7 @@ export default class extends Phaser.State {
             width : 1024,
             height : 768,
             asset : 'scroll-bg-old',
-            speed : .75,
+            speed : 2,
         })
         this.game.add.existing(this.bgold);
 
