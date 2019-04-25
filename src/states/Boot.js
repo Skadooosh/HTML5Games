@@ -16,6 +16,14 @@ export default class extends Phaser.State {
         this.load.image("cloud-layer-3","Asset/PNG/Default/cloud3.png")
         this.load.image("bush","Asset/PNG/Default/bush1.png")
         this.load.image("trap","Asset/PNG/Default/castleSmall.png")
+
+        this.load.image("gem-1","Asset/Collectable/gem-blue.png")
+        this.load.image("gem-2","Asset/Collectable/gem-green.png")
+        this.load.image("gem-3","Asset/Collectable/gem-orange.png")
+        this.load.image("gem-4","Asset/Collectable/gem-yellow.png")
+        this.load.image("arrow","Asset/Collectable/pointed-arrow.png")
+        this.load.image("saw","Asset/Collectable/saw.png")
+
         this.game.load.spritesheet('player', 'Asset/adventurer_tilesheet.png', 80, 110, 25);
 
     }
