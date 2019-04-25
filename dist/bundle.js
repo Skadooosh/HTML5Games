@@ -11159,6 +11159,14 @@ var _class = function (_Phaser$State) {
             this.load.image("cloud-layer-3", "Asset/PNG/Default/cloud3.png");
             this.load.image("bush", "Asset/PNG/Default/bush1.png");
             this.load.image("trap", "Asset/PNG/Default/castleSmall.png");
+
+            this.load.image("gem-1", "Asset/Collectable/gem-blue.png");
+            this.load.image("gem-2", "Asset/Collectable/gem-green.png");
+            this.load.image("gem-3", "Asset/Collectable/gem-orange.png");
+            this.load.image("gem-4", "Asset/Collectable/gem-yellow.png");
+            this.load.image("arrow", "Asset/Collectable/pointed-arrow.png");
+            this.load.image("saw", "Asset/Collectable/saw.png");
+
             this.game.load.spritesheet('player', 'Asset/adventurer_tilesheet.png', 80, 110, 25);
         }
     }, {
@@ -11388,7 +11396,7 @@ exports.default = _class;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11406,60 +11414,57 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Player = function (_Phaser$Sprite) {
-    _inherits(Player, _Phaser$Sprite);
+        _inherits(Player, _Phaser$Sprite);
 
-    function Player(_ref) {
-        var game = _ref.game,
-            x = _ref.x,
-            y = _ref.y,
-            asset = _ref.asset,
-            frame = _ref.frame,
-            hp = _ref.hp;
+        function Player(_ref) {
+                var game = _ref.game,
+                    x = _ref.x,
+                    y = _ref.y,
+                    asset = _ref.asset,
+                    frame = _ref.frame,
+                    hp = _ref.hp;
 
-        _classCallCheck(this, Player);
+                _classCallCheck(this, Player);
 
-        var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this, game, x, y, asset, frame));
+                var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this, game, x, y, asset, frame));
 
-        _this.game = game;
-        _this.game.physics.arcade.enable(_this);
-        _this.anchor.set(.5);
+                _this.game = game;
+                _this.game.physics.arcade.enable(_this);
+                _this.anchor.set(.5);
 
-        _this.hp = hp;
-        _this.maxHP = hp;
-        _this.JUMPSPEED = -1000;
+                _this.hp = hp;
+                _this.maxHP = hp;
+                _this.JUMPSPEED = -1000;
 
-        _this.x += _this.width;
-        _this.y = 200;
-        _this.jumpTimer = 0;
+                _this.x += _this.width;
+                _this.y = 200;
+                _this.jumpTimer = 0;
 
-        _this.animations.add('walk', [9, 10]);
-        _this.animations.play('walk', 4, true);
+                _this.animations.add('walk', [9, 10]);
+                _this.animations.play('walk', 4, true);
 
-        _this.body.collideWorldBounds = true;
-        _this.game.physics.arcade.gravity.y = 2600;
+                _this.body.collideWorldBounds = true;
+                _this.game.physics.arcade.gravity.y = 2600;
 
-        _this.cursors = game.input.keyboard.createCursorKeys();
-        _this.jumpButton = game.input.keyboard.addKey(_phaser2.default.Keyboard.SPACEBAR);
-        return _this;
-    }
-
-    _createClass(Player, [{
-        key: 'update',
-        value: function update() {
-
-            this.body.velocity.x = 0;
-
-            if (this.jumpButton.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
-                this.body.velocity.y = this.JUMPSPEED;
-                this.jumpTimer = game.time.now + 750;
-            }
+                _this.cursors = game.input.keyboard.createCursorKeys();
+                _this.jumpButton = game.input.keyboard.addKey(_phaser2.default.Keyboard.SPACEBAR);
+                return _this;
         }
-    }, {
-        key: 'jump',
-        value: function jump() {}
-    }]);
 
-    return Player;
+        _createClass(Player, [{
+                key: 'update',
+                value: function update() {
+
+                        this.body.velocity.x = 0;
+
+                        if (this.jumpButton.isDown && this.body.onFloor() && game.time.now > this.jumpTimer) {
+                                this.body.velocity.y = this.JUMPSPEED;
+                                this.jumpTimer = game.time.now + 750;
+                        }
+                }
+        }]);
+
+        return Player;
 }(_phaser2.default.Sprite);
 
 exports.default = Player;
